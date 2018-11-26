@@ -27,12 +27,15 @@ function mario() {
   ////////////// DO NOT MODIFY
 
   // WRITE YOUR EXERCISE 1 CODE HERE
-  while height(true)
-if (1<=height<=23){
-  
-}
-prompt(1)
+while(true){
+  height = prompt("Enter your height here")
+  height = Number(height)
+  if (1<=height && height<=23 && Number.isInteger(height)){
+   break;
+ }
 
+}
+document.getElementById ("mario-easy-output").innerHTML=("Please enter your height here")
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
   ////////////////////////// DO NOT MODIFY
