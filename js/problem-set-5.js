@@ -14,7 +14,7 @@
  * be continuously re-prompted until they comply with this restriction.
  *
  * As always, certain portions of the starter code are critical to the
- * the feedback script. Please do not modify these sections. They are
+ * the feedbackscript. Please do not modify these sections. They are
  * clearly marked.
  *
  * All output should be displayed on the page, not printed to the console.
@@ -27,7 +27,8 @@ function mario() {
   ////////////// DO NOT MODIFY
 
   // WRITE YOUR EXERCISE 1 CODE HERE
- let hashSymbol = "#";
+  // Note to self; can use += to add to variables
+  let hashSymbol = "#";
     let spaceSymbol = "&nbsp"
     let linesN = "";
     while(true) {
@@ -53,8 +54,9 @@ function mario() {
       }
 
     }
+
   ////////////////////////// DO NOT MODIFY
-  check('mario', height); // DO NOT MODIFY
+  check("mario", height); // DO NOT MODIFY
   ////////////////////////// DO NOT MODIFY
 }
 
@@ -87,7 +89,8 @@ function marioAgain() {
   ////////////// DO NOT MODIFY
 
   // WRITE YOUR EXERCISE 2 CODE HERE
-while(true) {
+  
+  while(true) {
      height = prompt("Enter An Integer Between 1 And 23");
      height = Number(height);
      if(height >= 1 && height <= 23 && Number.isInteger(height)) {
@@ -114,10 +117,6 @@ while(true) {
      i++;
    }
      document.getElementById("mario-hard-output").innerHTML=lines; lines = lines + "<code>";
-  //////////////////////////////// DO NOT MODIFY
-  check('mario-again', height); // DO NOT MODIFY
-  //////////////////////////////// DO NOT MODIFY
-}
 
 /*
  * Credit. 10 points.
@@ -129,11 +128,11 @@ while(true) {
  *   - a Mastercard image (provided)
  *   - a Visa image (provided)
  *
- * We'll use Luhn's algorithm to determine the validity of a credit card
+ * We"ll use Luhn"s algorithm to determine the validity of a credit card
  * number. Review the steps of the algorithm below.
  *
  *   0. Multiply every other digit by 2, starting with the number’s
- *      second-to-last digit, and then add those products' digits together.
+ *      second-to-last digit, and then add those products" digits together.
  *   1. Add the sum to the sum of the digits that weren’t multiplied by 2.
  *   2. If the total’s last digit is 0 (or, put more formally, if the total
  *      modulo 10 is congruent to 0), the number is valid!
@@ -153,13 +152,13 @@ while(true) {
  * re-prompted until they comply with this restriction.
  *
  * As always, certain portions of the starter code are critical to the
- * the feedback script. Please do not modify these sections. They are
+ * the feedbackscript. Please do not modify these sections. They are
  * clearly marked.
  *
  * All output should be displayed on the page, not printed to the console.
  */
-
 function credit() {
+
 let evennums = 0;
  let oddnums = 0;
  let cardnum = 0;
@@ -194,22 +193,15 @@ let evennums = 0;
 
   card = cardnum;
   console.log(typeof(card));
-
-  //////////// DO NOT MODIFY
-  let card; // DO NOT MODIFY
-  //////////// DO NOT MODIFY
-
-  // WRITE YOUR EXERCISE 3 CODE HERE
-
   /*
-   * NOTE: After reading in the card number and storing it in the 'card'
+   * NOTE: After reading in the card number and storing it in the "card"
    *       variable, do not modify it. If you find it necessary to manipulate
    *       this value, you will need to create a second variable to serve
-   *       as a copy of the 'card' variable.
+   *       as a copy of the "card" variable.
    */
 
   ///////////////////////// DO NOT MODIFY
-  check('credit', card); // DO NOT MODIFY
+  check("credit", card); // DO NOT MODIFY
   ///////////////////////// DO NOT MODIFY
 }
 
@@ -218,7 +210,7 @@ let evennums = 0;
  *
  * Write a function that generates a random number, and asks the user to
  * try to guess this number. When all is said and done, your function
- * should output the random number and the number of attempts it took the
+ * should output the random number and the number of attemptsTaken it toocCardthe
  * user to correctly guess that number. Your function should also provided
  * helpful hints, indicating whether the most recent guess was greater than
  * or less than the target.
@@ -230,7 +222,7 @@ let evennums = 0;
  * recorded.
  *
  * As always, certain portions of the starter code are critical to the
- * the feedback script. Please do not modify these sections. They are
+ * the feedbackscript. Please do not modify these sections. They are
  * clearly marked.
  *
  * All output should be displayed on the page, not printed to the console.
@@ -239,39 +231,41 @@ let evennums = 0;
 function guess() {
 
   // WRITE YOUR EXERCISE 4 CODE HERE
-let attemptsTaken= 0;
-let guessedNum = false
+let attemptsByUser= 0;
+let randomGeneratedNumb = Math.floor(Math.random(1)*1000);
+let userGuessedNumStatus = false
 let userGuessNum;
-let randomNum = Math.floor(Math.random(1)*1000);
-
-
-
-while(guessedNum == false) {
-   userGuessNum= Number(prompt("Input an integer based guess that is between 1 and 1000!"));
+while(userGuessedNumStatus == false) {
+   userGuessNum= Number(prompt("Input Your Guess For An Integer Between 1 And 1000"));
   if (userGuessNum <= 1000 && userGuessNum >= 1 && Number.isInteger(userGuessNum)) {
-    console.log(randomNum)
-    if(userGuessNum > randomNum) {
+    console.log(randomGeneratedNumb)
+    if(userGuessNum > randomGeneratedNumb) {
       alert("This attempt was too high!")
-      attemptsTaken+=1;
+      attemptsByUser+=1;
     }
-    if(userGuessNum < randomNum) {
+    else if(userGuessNum < randomGeneratedNumb) {
       alert("This attempt was too low!")
-      attemptsTaken+=1;
+      attemptsByUser+=1;
     }
-   if(userGuessNum == randomNum) {
+    else if(userGuessNum == randomGeneratedNumb) {
       alert("Correct!")
-      attemptsTaken+=1;
-      found = true;
-      div4=document.getElementById("guess-output")
-      div4.innerHTML = "Number: " + randomNum + "<br/>Attempts: " + attemptsTaken;
+      attemptsByUser+=1;
+      userGuessedNumStatus = true;
+      div=document.getElementById("guess-output")
+      div.innerHTML = "Number: " + randomGeneratedNumb + "<br/>Attempts: " + attemptsByUser;
       break;
     }
   }
-
+  else {
+    continue;
+  }
 
 }
+
+
+
   ////////////////// DO NOT MODIFY
-  check('guess'); // DO NOT MODIFY
+  check("guess"); // DO NOT MODIFY
   ////////////////// DO NOT MODIFY
 }
 
@@ -279,7 +273,7 @@ while(guessedNum == false) {
  * Hurricane. 5 points.
  *
  * Write a function that prompts the user to enter a windspeed, and prints
- * the hurricane category (if applicable) for that windspeed. We'll be
+ * the hurricane category (if applicable) for that windspeed. We"ll be
  * using the Saffir-Simpson scale, shown below in MPH.
  *   - Category 5: 157+
  *   - Category 4: 130-156
@@ -293,14 +287,19 @@ while(guessedNum == false) {
  * restriction.
  *
  * As always, certain portions of the starter code are critical to the
- * the feedback script. Please do not modify these sections. They are
+ * the feedback and script. Please do not modify these sections. They are
  * clearly marked.
  *
  * All output should be displayed on the page, not printed to the console.
  */
 
 function hurricane() {
-windspeed = Number(prompt("Please enter a positive integer for your windspeed"));
+
+  ///////////////// DO NOT MODIFY
+  let windspeed; // DO NOT MODIFY
+  ///////////////// DO NOT MODIFY
+
+  windspeed = Number(prompt("Please enter a positive integer for your windspeed"));
   //legible break
   while (windspeed < 0) {
     windspeed = Number(prompt("Please enter a positive integer for your windspeed"));
@@ -349,14 +348,6 @@ windspeed = Number(prompt("Please enter a positive integer for your windspeed"))
   check("hurricane", windspeed); // DO NOT MODIFY
   ///////////////////////////////// DO NOT MODIFY
 }
-  ///////////////// DO NOT MODIFY
-  let windspeed; // DO NOT MODIFY
-  ///////////////// DO NOT MODIFY
-
-  ///////////////////////////////// DO NOT MODIFY
-  check('hurricane', windspeed); // DO NOT MODIFY
-  ///////////////////////////////// DO NOT MODIFY
-}
 
 /*
  * Gymnastics. 5 points.
@@ -370,7 +361,7 @@ windspeed = Number(prompt("Please enter a positive integer for your windspeed"))
  * be continuously re-prompted until they comply with this restriction.
  *
  * As always, certain portions of the starter code are critical to the
- * the feedback script. Please do not modify these sections. They are
+ * the feedbackscript. Please do not modify these sections. They are
  * clearly marked.
  *
  * All output should be displayed on the page, not printed to the console.
@@ -384,18 +375,18 @@ function gymnastics() {
   /////////////////// DO NOT MODIFY
 
   /*
-   * NOTE: The 'total' variable should be representative of the sum of all
-   *       six of the judges' scores.
+   * NOTE: The "total" variable should be representative of the sum of all
+   *       six of the judges" scores.
    */
 
   /*
-   * NOTE: You need to add each score (valid or not) to the 'scores' variable.
+   * NOTE: You need to add each score (valid or not) to the "scores" variable.
    *       To do this, use the following syntax:
    *
    *       scores.push(firstScore);   // your variable names for your scores
    *       scores.push(secondScore);  // will likely be different than mine
    */
- do{
+   do{
      scoreNum1 = Number(prompt("Please enter a score between 0 and 10"));
 
    } while (scoreNum1 < 0.0 || scoreNum1 > 10.0|| !Number.isInteger(scoreNum1)){
@@ -436,7 +427,7 @@ function gymnastics() {
    let div6 = document.getElementById('gymnastics-output');
    div6.innerHTML = "Discarded: " + Math.min(scoreNum1, scoreNum2, scoreNum3, scoreNum4, scoreNum5, scoreNum6) + ', ' + Math.max(scoreNum1, scoreNum2, scoreNum3, scoreNum4, scoreNum5, scoreNum6) + '<br />Score: ' + averageScore.toFixed(2);
   /////////////////////////////// DO NOT MODIFY
-  check('gymnastics', scores); // DO NOT MODIFY
+  check("gymnastics", scores); // DO NOT MODIFY
   /////////////////////////////// DO NOT MODIFY
 }
 
@@ -446,7 +437,7 @@ function gymnastics() {
  * Write a function that prompts the user to enter test, quiz, and homework
  * grades for the marking period. Users can enter as many grades of each
  * category, entering -1 to signal they are finished. Your function should
- * output the user's final grade, where tests, quizzes, and homework are
+ * output the user"s final grade, where tests, quizzes, and homeworcCardare
  * weighted at 60%, 30%, and 10%, respectively.
  *
  * Grades must be real numbers in the range [0.0, 100.0], and users should
@@ -455,7 +446,7 @@ function gymnastics() {
  * for that category.
  *
  * As always, certain portions of the starter code are critical to the
- * the feedback script. Please do not modify these sections. They are
+ * the feedbaccCardscript. Please do not modify these sections. They are
  * clearly marked.
  *
  * All output should be displayed on the page, not printed to the console.
@@ -470,9 +461,9 @@ function reportCard() {
   ///////////////////////// DO NOT MODIFY
 
   /*
-   * NOTE: The 'testTotal', 'quizTotal', and 'homeworkTotal' variables
+   * NOTE: The "testTotal", "quizTotal", and "homeworkTotal" variables
    *       should be representative of the sum of the test scores, quiz
-   *       scores, and homework scores the user enters, respectively.
+   *       scores, and homeworcCardscores the user enters, respectively.
    */
 
   ///////////////////// DO NOT MODIFY
@@ -480,7 +471,13 @@ function reportCard() {
   let quizzes = 0; //// DO NOT MODIFY
   let homeworks = 0; // DO NOT MODIFY
   ///////////////////// DO NOT MODIFY
-let testScore;
+
+  /*
+   * NOTE: The "tests", "quizzes", and "homeworks" variables should be
+   *       representative of the number of tests, quizzes, and homework
+   *       grades the user enters, respectively.
+   */
+   let testScore;
     let quizScore;
     let homeWorkscore;
     let testAverage;
@@ -557,14 +554,8 @@ let div7=document.getElementById("report-card-output")
 div7.innerHTML = "Tests: " + testAverage.toFixed(2) + "</br>Quizzes: " + quizAverage.toFixed(2) + "</br>Homework: " + homeworkAverage.toFixed(2) + "</br>Grade: " + finalGradeAverage.toFixed(2);
 
 
-  /*
-   * NOTE: The 'tests', 'quizzes', and 'homeworks' variables should be
-   *       representative of the number of tests, quizzes, and homework
-   *       grades the user enters, respectively.
-   */
-
   /////////////////////// DO NOT MODIFY
-  check('report-card', // DO NOT MODIFY
+  check("report-card", // DO NOT MODIFY
     testTotal, ////////// DO NOT MODIFY
     tests, ////////////// DO NOT MODIFY
     quizTotal, ////////// DO NOT MODIFY
